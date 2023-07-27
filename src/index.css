@@ -1,0 +1,112 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+
+/* Navbar's login/signup dropdown css */
+
+.dropbtn {
+    background-color: white;
+    color: black;
+    padding: 0px 10px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-right: 20px;
+    box-shadow: 0px 0px 0px 0.2px;
+    cursor: pointer;
+
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 210px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 26px;
+    text-decoration: none;
+    display: block;
+    font-size: 18px;
+}
+
+.dropdown-content a:hover {
+    background-color: rgb(238, 238, 238);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover,
+.dropdown:hover .dropbtn {
+    background-color: rgb(238, 238, 238);
+}
+
+/* login form css */
+.wrapper {
+    background-color: #fff;
+    padding: 0px 80px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: solid 2px rgba(0, 0, 0, 0.1);
+}
+
+.wrapper h2 {
+    margin-top: 15px;
+}
+
+.nav-box li {
+    font-size: 19px;
+    margin-left: 45px;
+    margin-right: 45px;
+}
+
+/* product card css */
+
+.grid-product_image {
+    height: 300px;
+    box-shadow: 0px 2px whitesmoke;
+}
+
+/* cart-css */
+
+.cat-link{
+    position: relative;
+}
+.cart-icon{
+    position: relative;
+    font-size: 3.2rem;
+    
+}
+.cart-total-item{
+    box-shadow: 0px 0px 2px 0px;
+    height: 1.5rem;
+    width: 1.5rem;
+    position: absolute;
+    display: grid;
+    place-items: center;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 100%;
+    top: 10%;
+    left: 96.5%;
+}

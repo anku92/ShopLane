@@ -12,6 +12,7 @@ const SignupPage = () => {
         firstName: "",
         lastName: "",
         email: "",
+        userName: "",
         password: "",
         confirmPassword: ""
     }
@@ -23,10 +24,11 @@ const SignupPage = () => {
     };
 
     const validationSchema = Yup.object({
-        firstName: Yup.string().required('first name is required').min(1).max(10),
-        lastName: Yup.string().required('last name is required').min(1).max(10),
-        email: Yup.string().required("email is required").email("email must be in valid format"),
-        password: Yup.string().required("password is required").min(6).max(12),
+        firstName: Yup.string().required('First name is required').min(1).max(10),
+        lastName: Yup.string().required('Last name is required').min(1).max(10),
+        email: Yup.string().required("Email is required").email("Email must be in valid email format"),
+        userName: Yup.string().required("User Name is required"),
+        password: Yup.string().required("Password is required").min(6).max(12),
         confirmPassword: Yup.string()
             .required('Please retype your password.')
             .oneOf([Yup.ref('password')], 'Your passwords do not match.')
@@ -57,9 +59,7 @@ const SignupPage = () => {
                                                         ? "form-control is-invalid" : "form-control"}
                                                         name="firstName" type="text" placeholder="First Name" />
                                                     <ErrorMessage name="firstName">
-                                                        {
-                                                            (errorMessage) => (<small className="text-danger">{errorMessage}</small>)
-                                                        }
+                                                        {(errorMessage) => (<small className="text-danger">{errorMessage}</small>)}
                                                     </ErrorMessage>
                                                 </div>
 
@@ -68,9 +68,7 @@ const SignupPage = () => {
                                                         ? "form-control is-invalid" : "form-control"}
                                                         name="lastName" type="text" placeholder="Last Name" />
                                                     <ErrorMessage name="lastName">
-                                                        {
-                                                            (errorMessage) => (<small className="text-danger">{errorMessage}</small>)
-                                                        }
+                                                        {(errorMessage) => (<small className="text-danger">{errorMessage}</small>)}
                                                     </ErrorMessage>
                                                 </div>
 
@@ -79,9 +77,15 @@ const SignupPage = () => {
                                                         ? "form-control is-invalid" : "form-control"}
                                                         name="email" type="text" placeholder="Email Address" />
                                                     <ErrorMessage name="email">
-                                                        {
-                                                            (errorMessage) => (<small className="text-danger">{errorMessage}</small>)
-                                                        }
+                                                        {(errorMessage) => (<small className="text-danger">{errorMessage}</small>)}
+                                                    </ErrorMessage>
+                                                </div>
+                                                <div className="form-group">
+                                                    <Field className={formik.touched.userName && formik.errors.userName
+                                                        ? "form-control is-invalid" : "form-control"}
+                                                        name="userName" type="text" placeholder="User Name" />
+                                                    <ErrorMessage name="userName">
+                                                        {(errorMessage) => (<small className="text-danger">{errorMessage}</small>)}
                                                     </ErrorMessage>
                                                 </div>
 
@@ -90,9 +94,7 @@ const SignupPage = () => {
                                                         ? "form-control is-invalid" : "form-control"}
                                                         name="password" type="password" placeholder="Password" />
                                                     <ErrorMessage name="password">
-                                                        {
-                                                            (errorMessage) => (<small className="text-danger">{errorMessage}</small>)
-                                                        }
+                                                        {(errorMessage) => (<small className="text-danger">{errorMessage}</small>)}
                                                     </ErrorMessage>
                                                 </div>
 
@@ -101,13 +103,11 @@ const SignupPage = () => {
                                                         ? "form-control is-invalid" : "form-control"}
                                                         name="confirmPassword" type="password" placeholder="Confirm Password" />
                                                     <ErrorMessage name="confirmPassword">
-                                                        {
-                                                            (errorMessage) => (<small className="text-danger">{errorMessage}</small>)
-                                                        }
+                                                        {(errorMessage) => (<small className="text-danger">{errorMessage}</small>)}
                                                     </ErrorMessage>
                                                 </div>
 
-                                                <p style={{fontSize:"18px", color:"grey"}} className="text-center my-4">Already have an account? Login <Link to="/login">here.</Link></p>
+                                                <p style={{ fontSize: "18px", color: "grey" }} className="text-center my-4">Already have an account? Login <Link to="/login">here.</Link></p>
                                                 <input disabled={!formik.isValid} type="submit" value="Sign Up" className="my-4 btn btn-primary btn-block" />
                                             </Form>
                                         )

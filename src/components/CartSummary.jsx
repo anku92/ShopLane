@@ -1,4 +1,6 @@
+import React from "react";
 import { FaTrashAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const CartSummary = () => {
 
@@ -35,7 +37,7 @@ const CartSummary = () => {
                                 </div>
 
                                 <div className="px-2 py-1">
-                                    <FaTrashAlt />
+                                    <Link to="/"  ><FaTrashAlt /></Link>
                                 </div>
                             </div>
 

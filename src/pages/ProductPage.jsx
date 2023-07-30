@@ -1,16 +1,16 @@
-import CartSummary from "../components/CartSummary";
 import CategoryNav from "../components/CategoryNav";
+import CategoryProduct from "../components/CategoryProduct"
 import Navbar from "../components/Navbar";
 
-const CartPage = () => {
+const ProductPage = () => {
 
     return (
         <>
             <Navbar />
             <CategoryNav />
-            <CartSummary />
+            <CategoryProduct />
         </>
     )
 }
 
-export default CartPage;
+export default ProductPage;

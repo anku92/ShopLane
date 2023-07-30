@@ -1,20 +1,18 @@
-import axios from "axios"
-import { useEffect, useState } from "react"
-import ProductCard from "./ProductCard"
-import EndPoints from "../api/EndPoints"
+import axios from "axios";
+import { useEffect, useState } from "react";
+import EndPoints from "../api/EndPoints";
+import Product from "./Product"
 
-const ProductList = () => {
-    const [items, setItems] = useState([])
-    // const cat = "men's clothing"
-
+const Products = () => {
+    const [products, setProducts] = useState([]);
     const getData = () => {
         axios.get(EndPoints.PRODUCTS_URL)
             .then((response) => {
-                setItems(response.data)
+                setProducts(response.data)
             })
             .catch((error) => console.log(error))
     }
-    
+
     useEffect(() => {
         getData();
     }, [])
@@ -22,10 +20,10 @@ const ProductList = () => {
     return (
         <div className="row m-3">
             {
-                items.map((item, index) => <ProductCard key={index} data={item} />)
+                products.map((product, index) => <Product key={index} data={product} />)
             }
         </div>
     )
 }
 
-export default ProductList;
+export default Products;

@@ -10,7 +10,7 @@ import axios from "axios";
 const LoginPage = () => {
 
     const initialValues = {
-        email: "",
+        userName: "",
         password: ""
     };
 
@@ -38,8 +38,8 @@ const LoginPage = () => {
 
 
     const validationSchema = Yup.object({
-        email: Yup.string().required("email is required").email("email should be in valid email format"),
-        password: Yup.string().required("password is required").min(6, "password should contain atleast 6 characters")
+        userName: Yup.string().required("Username is required"),
+        password: Yup.string().required("Password is required").min(6, "password should contain atleast 6 characters")
             .max(12, "password should not be more that 12 character")
     })
 
@@ -66,20 +66,18 @@ const LoginPage = () => {
                                             <Form>
                                                 <div className="form-group">
                                                     <Field
-                                                        className={formik.touched.email && formik.errors.email
+                                                        className={formik.touched.userName && formik.errors.userName
                                                             ? "form-control is-invalid" : "form-control"}
-                                                        type="text" name="email"
-                                                        placeholder="Email Address"
+                                                        type="text" name="userName"
+                                                        placeholder="User Name"
                                                     />
-                                                    <ErrorMessage name="email">
-                                                    {
-                                                        (errorMessage) => (
+                                                    <ErrorMessage name="userName">
+                                                        {(errorMessage) => (
                                                             <small className="text-danger">{errorMessage}</small>
-                                                        )
-                                                    }
-                                                </ErrorMessage>
+                                                        )}
+                                                    </ErrorMessage>
                                                 </div>
-                                                
+
 
                                                 <div className="form-group">
                                                     <Field
@@ -89,21 +87,28 @@ const LoginPage = () => {
                                                         placeholder="Password"
                                                     />
                                                     <ErrorMessage name="password">
-                                                        {
-                                                            (errorMessage) => (
-                                                                <small className="text-danger">{errorMessage}</small>
-                                                            )
-                                                        }
+                                                        {(errorMessage) => (
+                                                            <small className="text-danger">{errorMessage}</small>
+                                                        )}
                                                     </ErrorMessage>
                                                 </div>
-                                                <p style={{fontSize:"18px", color:"grey"}} className="text-center my-4">Don't have an account? Sign up <Link to="/signup">here.</Link></p>
-                                                <input className="my-4 btn btn-block btn-primary" type="submit" value="Login" disabled={!formik.isValid} />
+
+                                                <p style={{ fontSize: "18px", color: "grey" }}
+                                                    className="text-center my-4">
+                                                    Don't have an account? Sign up
+                                                    <Link to="/signup">here.</Link>
+                                                </p>
+
+                                                <input
+                                                    className="my-4 btn btn-block btn-primary"
+                                                    type="submit" value="Login"
+                                                    disabled={!formik.isValid}
+                                                />
                                             </Form>
                                         )
                                     }
                                 }
                             </Formik>
-
                         </div>
                     </div>
                     <div className="col-md-3"></div>

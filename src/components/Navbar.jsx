@@ -1,3 +1,4 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import { BsCart3 } from "react-icons/bs";
 import { SlArrowDown } from "react-icons/sl";
@@ -40,9 +41,7 @@ const Navbar = () => {
                     </Link>
 
                 </div>
-                
             </div>
-
         </nav>
     )
 }

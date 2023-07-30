@@ -3,11 +3,12 @@ import axios from "axios";
 import EndPoints from "../api/EndPoints";
 import Navbar from "../components/Navbar";
 import CategoryNav from "../components/CategoryNav"
+import { useParams } from "react-router-dom";
 
 
 const ProductDetailPage = () => {
 
-    const id = "1";
+    const {id} = useParams();
     const [product, setProduct] = useState({})
 
     const getData = () => {
@@ -18,7 +19,7 @@ const ProductDetailPage = () => {
 
     useEffect(() => {
         getData()
-    }, [id])
+    })
 
     return (
         <>

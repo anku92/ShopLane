@@ -1,37 +1,60 @@
 import Navbar from "../components/Navbar";
 import CategoryNav from "../components/CategoryNav";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Form, Formik, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import EndPoints from "../api/EndPoints";
+import { useState } from "react";
 
 const SignupPage = () => {
+
+    const nav = useNavigate();
+
+    const [requestResponse, setRequestResponse] = useState({
+        textMessage: "",
+        alertClass: ""
+    })
 
     const initialValues = {
         firstName: "",
         lastName: "",
         email: "",
-        userName: "",
+        username: "",
         password: "",
         confirmPassword: ""
     }
 
     const onSubmit = (values) => {
         axios.post(EndPoints.REGISTER_URL, values)
-            .then((resp => console.log(resp.data)))
+            .then((response) => {
+                console.log(response.config.data)
+                setRequestResponse({
+                    textMessage: "Signup Successful [...Redirecting to Homepage]",
+                    alertClass: "alert alert-success"
+                });
+                setTimeout(() => {
+                    nav("/")
+                }, 2000);
+                
+            }, (error) => {
+                setRequestResponse({
+                    textMessage: "Invalid User",
+                    alertClass: "alert alert-danger"
+                })
+            })
             .catch((error) => console.log(error))
     };
 
     const validationSchema = Yup.object({
-        firstName: Yup.string().required('First name is required').min(1).max(10),
-        lastName: Yup.string().required('Last name is required').min(1).max(10),
+        firstName: Yup.string().required('First Name is required').min(1).max(10),
+        lastName: Yup.string().required('Last Name is required').min(1).max(10),
         email: Yup.string().required("Email is required").email("Email must be in valid email format"),
-        userName: Yup.string().required("User Name is required"),
+        username: Yup.string().required("Username is required"),
         password: Yup.string().required("Password is required").min(6).max(12),
         confirmPassword: Yup.string()
             .required('Please retype your password.')
-            .oneOf([Yup.ref('password')], 'Your passwords do not match.')
+            .oneOf([Yup.ref('password')], 'Passwords do not match.')
     })
 
     return (
@@ -44,6 +67,7 @@ const SignupPage = () => {
                     <div className="col-md-6">
                         <div className="wrapper">
                             <h2 className="text-center display-4 py-3">Sign Up</h2>
+                            <div className={requestResponse.alertClass}>{requestResponse.textMessage}</div>
 
                             <Formik
                                 onSubmit={onSubmit}
@@ -81,10 +105,10 @@ const SignupPage = () => {
                                                     </ErrorMessage>
                                                 </div>
                                                 <div className="form-group">
-                                                    <Field className={formik.touched.userName && formik.errors.userName
+                                                    <Field className={formik.touched.username && formik.errors.username
                                                         ? "form-control is-invalid" : "form-control"}
-                                                        name="userName" type="text" placeholder="User Name" />
-                                                    <ErrorMessage name="userName">
+                                                        name="username" type="text" placeholder="Username" />
+                                                    <ErrorMessage name="username">
                                                         {(errorMessage) => (<small className="text-danger">{errorMessage}</small>)}
                                                     </ErrorMessage>
                                                 </div>

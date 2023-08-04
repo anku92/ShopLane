@@ -4,13 +4,13 @@ import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useState } from "react";
 import EndPoints from "../api/EndPoints";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const LoginPage = () => {
 
     const initialValues = {
-        userName: "",
+        username: "",
         password: ""
     };
 
@@ -19,13 +19,19 @@ const LoginPage = () => {
         alertClass: ""
     })
 
+    const nav = useNavigate();
+
     const onSubmit = (values) => {
         axios.post(EndPoints.LOGIN_URL, values)
             .then((response) => {
+                console.log(response.config.data)
                 setRequestResponse({
                     textMessage: "login successful",
                     alertClass: "alert alert-success"
                 });
+                localStorage.setItem("token", response.data.token);
+                localStorage.setItem("user", response.config.data);
+                nav("/");
 
             }, (error) => {
                 setRequestResponse({
@@ -38,9 +44,9 @@ const LoginPage = () => {
 
 
     const validationSchema = Yup.object({
-        userName: Yup.string().required("Username is required"),
-        password: Yup.string().required("Password is required").min(6, "password should contain atleast 6 characters")
-            .max(12, "password should not be more that 12 character")
+        username: Yup.string().required("Username is required"),
+        password: Yup.string().required("Password is required").min(6, "Password should contain atleast 6 characters")
+            .max(12, "Password should not be more that 12 character")
     })
 
     return (
@@ -66,12 +72,12 @@ const LoginPage = () => {
                                             <Form>
                                                 <div className="form-group">
                                                     <Field
-                                                        className={formik.touched.userName && formik.errors.userName
+                                                        className={formik.touched.username && formik.errors.username
                                                             ? "form-control is-invalid" : "form-control"}
-                                                        type="text" name="userName"
-                                                        placeholder="User Name"
+                                                        type="text" name="username"
+                                                        placeholder="Username"
                                                     />
-                                                    <ErrorMessage name="userName">
+                                                    <ErrorMessage name="username">
                                                         {(errorMessage) => (
                                                             <small className="text-danger">{errorMessage}</small>
                                                         )}

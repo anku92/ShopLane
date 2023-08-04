@@ -1,16 +1,16 @@
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  }
-  
-  code {
+}
+
+code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
-  }
+        monospace;
+}
 
 /* Navbar's login/signup dropdown css */
 
@@ -18,7 +18,7 @@ body {
     background-color: white;
     color: black;
     padding: 0px 10px;
-    font-size: 20px;
+    font-size: 15px;
     border: none;
     cursor: pointer;
 }
@@ -36,17 +36,18 @@ body {
     display: none;
     position: absolute;
     background-color: #f9f9f9;
-    min-width: 210px;
+    min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
 
 .dropdown-content a {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     color: black;
-    padding: 12px 26px;
+    padding: 7px 20px;
     text-decoration: none;
     display: block;
-    font-size: 18px;
+    font-size: 15px;
 }
 
 .dropdown-content a:hover {
@@ -62,6 +63,31 @@ body {
     background-color: rgb(238, 238, 238);
 }
 
+.cart-link {
+    position: relative;
+}
+
+.cart-icon {
+    position: relative;
+    font-size: 2.5rem;
+
+}
+
+.cart-total-item {
+    font-size: 12px;
+    height: 1.3rem;
+    width: 1.3rem;
+    position: absolute;
+    display: grid;
+    place-items: center;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    border-radius: 100%;
+    top: -60%;
+    left: 95%;
+}
+
 /* login form css */
 .wrapper {
     background-color: #fff;
@@ -75,38 +101,29 @@ body {
     margin-top: 15px;
 }
 
+/* CategoryNav Nav-Links CSS */
 .nav-box li {
     font-size: 19px;
     margin-left: 45px;
     margin-right: 45px;
 }
 
-/* product card css */
+.nav-box li:hover {
+    border-left: 4px yellow solid;
+    border-right: 4px yellow solid;
+}
 
+/* product card css */
 .grid-product_image {
     height: 300px;
+    width: 100%;
     box-shadow: 0px 2px whitesmoke;
 }
 
-/* cart-css */
-
-.cat-link{
-    position: relative;
-}
-.cart-icon{
-    position: relative;
-    font-size: 3.2rem;
-    
-}
-.cart-total-item{
-    box-shadow: 0px 0px 2px 0px;
-    height: 1.5rem;
-    width: 1.5rem;
-    position: absolute;
-    display: grid;
-    place-items: center;
-    background-color: rgba(0, 0, 0, 0.1);
-    border-radius: 100%;
-    top: 10%;
-    left: 96.5%;
+.product-card-title {
+    overflow: hidden;
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: grey;
 }

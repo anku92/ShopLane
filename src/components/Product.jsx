@@ -11,7 +11,7 @@ const Product = (props) => {
         setPref(prev => !prev);
     }
 
-    const {id, image, title, rating, price } = props.data;
+    const { id, image, title, rating, price } = props.data;
 
     return (
 
@@ -20,13 +20,12 @@ const Product = (props) => {
                 <div className="d-flex justify-content-end py-4" onClick={handleFavorite}>
                     {pref ? <MdFavorite size="25px" /> : <MdFavoriteBorder size="25px" />}
                 </div>
-                <img src={image} className="card-top-image grid-product_image" alt="..." />
+                <Link to={"/products/" + id}>
+                    <img src={image} className="card-top-image grid-product_image" alt="..." />
+                </Link>
                 <div className="card-body">
                     <Link to={"/products/" + id}>
-                        <p style={{
-                            overflow: "hidden", width: "100%", whiteSpace: "nowrap",
-                            textOverflow: "ellipsis", color: "grey"
-                        }} className="text-dark">
+                        <p className="text-dark product-card-title">
                             <strong>Brand, </strong>
                             {title}
                         </p>

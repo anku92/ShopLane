@@ -37,7 +37,7 @@ const CartSummary = () => {
                                 </div>
 
                                 <div className="px-2 py-1">
-                                    <Link to="/"  ><FaTrashAlt /></Link>
+                                    <Link className="text-dark" to="/" ><FaTrashAlt /></Link>
                                 </div>
                             </div>
 

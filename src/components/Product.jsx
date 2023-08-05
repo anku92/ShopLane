@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 import { Link } from "react-router-dom";
+import StarRating from "./StarRating";
 
 const Product = (props) => {
 
@@ -25,17 +26,13 @@ const Product = (props) => {
                 </Link>
                 <div className="card-body">
                     <Link to={"/products/" + id}>
-                        <p className="text-dark product-card-title">
+                        <div className="text-dark product-card-title">
                             <strong>Brand, </strong>
                             {title}
-                        </p>
+                        </div>
                     </Link>
 
-                    <p>
-                        {rating.rate}
-                        <span> &#40;{rating.count}&#41;</span>
-                    </p>
-
+                    <StarRating rate={rating.rate} count={rating.count} />
                     <p>&#36; <span style={{ fontSize: "18px", fontFamily: "tahoma" }}>{price}</span></p>
 
                     <Link to="/" className="btn btn-primary btn-block">Add to Cart</Link>

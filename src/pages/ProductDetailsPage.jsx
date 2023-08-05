@@ -31,7 +31,7 @@ const ProductDetailPage = () => {
                         <div className="d-flex flex-column align-items-center col-md-6">
                             <img src={product.image} alt="..." className="img-fluid" width="250pc" />
                         </div>
-                        <div className="col-md-6 d-flex flex-column justify-content-between text-left">
+                        <div className="col-md-6 px-4 d-flex flex-column justify-content-between text-left">
                             <span>
                                 <h4>Brand</h4>
                                 <h5>{product.title}</h5>
@@ -39,8 +39,8 @@ const ProductDetailPage = () => {
 
                             <hr />
                             <p><span>&#36;</span>{product.price}</p>
-                            <p>{product.description}</p>
-                            <button className="btn btn-primary">Add to Cart</button>
+                            <p className="text-justify">{product.description}</p>
+                            <button className="btn btn-primary align-self-start">Add to Cart</button>
                         </div>
                     </div>
                 </div>
